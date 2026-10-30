@@ -34,6 +34,7 @@ class Varasto:
         if maara > self.saldo:
             kaikki_mita_voidaan = self.saldo
             self.saldo = 0.0
+            
 
             return kaikki_mita_voidaan
 
@@ -43,3 +44,4 @@ class Varasto:
 
     def __str__(self):
         return f"saldo = {self.saldo}, vielä tilaa {self.paljonko_mahtuu()}"
+
