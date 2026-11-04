@@ -2,7 +2,6 @@ name: CI
 
 on:
   push:
-    branches: [main]
 
 jobs:
   build:
@@ -18,10 +17,11 @@ jobs:
         run: uv sync
       - name: Run tests
         run: uv run coverage run --branch -m pytest  
+      - name: Run Pylint
+        run: uv run pylint --disable=missing-module-docstring,missing-class-docstring,missing-function-docstring src
       - name: Coverage report
         run: uv run coverage xml
       - name: Coverage report to Codecov
         uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
